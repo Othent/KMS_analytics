@@ -68,7 +68,6 @@ export async function getAllTransactions(
     let response;
     try {
       response = await gql.run(query, { cursor, latestBlock, tags });
-      console.log(...response.data.transactions.edges);
       allTransactions.push(...response.data.transactions.edges);
       hasNextPage = response.data.transactions.pageInfo.hasNextPage;
       cursor = response.data.transactions.edges.slice(-1)[0]?.cursor;
