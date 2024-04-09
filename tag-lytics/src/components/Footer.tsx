@@ -4,7 +4,7 @@ import styles from "./components.module.css";
 const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
-      <p>&copy; 2023 Tag-lytics. All rights reserved.</p>
+      <p>&copy; 2024 Tag-lytics.</p>
     </footer>
   );
 };

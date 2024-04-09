@@ -1,8 +1,15 @@
 import React from "react";
 import styles from "./components.module.css";
 import Image from "next/image";
+import SearchBar from "./SearchBar";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  // @ts-ignore
+  searchParams: ReturnType<typeof useSearchParams>;
+  onGatewayChange: (gateway: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ searchParams, onGatewayChange }) => {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -15,7 +22,10 @@ const Header: React.FC = () => {
         />
         <h1 className={styles.h1}>Tag-lytics</h1>
       </div>
-      <div>Search bar</div>
+      <SearchBar
+        searchParams={searchParams}
+        onGatewayChange={onGatewayChange}
+      />
     </header>
   );
 };

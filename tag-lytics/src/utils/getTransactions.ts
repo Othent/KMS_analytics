@@ -1,9 +1,48 @@
 import { arGql } from "ar-gql";
 import axios from "axios";
 
-export async function getAllTransactions() {
-  //   tags: { name: string; values: string[] }[],
-  const gql = arGql("https://arweave-search.goldsky.com/graphql");
+export interface Transaction {
+  node: {
+    id: string;
+    anchor: string;
+    signature: string;
+    recipient: string;
+    owner: {
+      address: string;
+      key: string;
+    };
+    fee: {
+      winston: string;
+      ar: string;
+    };
+    quantity: {
+      winston: string;
+      ar: string;
+    };
+    data: {
+      size: string;
+      type: string;
+    };
+    tags: {
+      name: string;
+      value: string;
+    }[];
+    block: {
+      id: string;
+      timestamp: number;
+      height: number;
+      previous: string;
+    };
+    parent: null;
+  };
+  cursor: string;
+}
+
+export async function getAllTransactions(
+  tags: { name: string; values: string }[],
+  gateway: string,
+): Promise<Transaction[]> {
+  const gql = arGql(gateway);
   const query = `
     query GetTransactions($cursor: String, $latestBlock: Int, $tags: [TagFilter!]) {
       transactions(
@@ -58,8 +97,6 @@ export async function getAllTransactions() {
     }
   `;
 
-  let tags = [{ name: "AppName", values: ["Lorimer"] }];
-
   let allTransactions: any[] = [];
   let cursor = null;
   let hasNextPage = true;
@@ -69,7 +106,6 @@ export async function getAllTransactions() {
     let response;
     try {
       response = await gql.run(query, { cursor, latestBlock, tags });
-      console.log(...response.data.transactions.edges);
       allTransactions.push(...response.data.transactions.edges);
       hasNextPage = response.data.transactions.pageInfo.hasNextPage;
       cursor = response.data.transactions.edges.slice(-1)[0]?.cursor;
