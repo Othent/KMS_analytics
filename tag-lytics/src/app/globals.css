@@ -2,3 +2,8 @@
   --primary-color: #2e2836;
   --secondary-color: #6c757d;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
