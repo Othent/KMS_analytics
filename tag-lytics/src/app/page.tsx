@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import Table from "../components/Table";
 import InputBoxes from "../components/InputBoxes";
 import ColumnSelector from "../components/ColumnSelector";
+import PieCharts from "../components/PieCharts";
+import styles from "./page.module.css";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -18,15 +20,20 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Header
         searchParams={searchParams}
         onGatewayChange={handleGatewayChange}
       />
-      <div className="main-content">
-        <InputBoxes />
-        <ColumnSelector />
-        <Table selectedGateway={selectedGateway} />
+      <div className={styles.mainContent}>
+        <div className={styles.row}>
+          <InputBoxes />
+          <ColumnSelector />
+        </div>
+        <div className={styles.row}>
+          <Table selectedGateway={selectedGateway} />
+          <PieCharts />
+        </div>
       </div>
       <Footer />
     </div>

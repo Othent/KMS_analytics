@@ -1,5 +1,6 @@
 import React from "react";
 import { useTransactions } from "@/contexts/TransactionsContext";
+import styles from "./components.module.css";
 
 const InputBox: React.FC = () => {
   const { tags, setTags } = useTransactions();
@@ -16,13 +17,27 @@ const InputBox: React.FC = () => {
 
   const handleDeleteTag = (index: number) => {
     const newTags = tags.filter((_, tagIndex) => tagIndex !== index);
-    setTags(newTags);
+    setTags(newTags.length ? newTags : [{ name: "", value: "" }]);
+  };
+
+  React.useEffect(() => {
+    if (!tags.length) {
+      setTags([{ name: "", value: "" }]);
+    }
+  }, [tags, setTags]);
+
+  const handleAddTag = () => {
+    if (tags.length < 6) {
+      setTags([...tags, { name: "", value: "" }]);
+    } else {
+      alert("Maximum of 6 tags reached.");
+    }
   };
 
   return (
-    <div>
+    <div className={styles.inputBoxesContainer}>
       {tags.map((tag, index) => (
-        <div key={index} style={{ marginBottom: "10px" }}>
+        <div key={index} className={styles.inputBox}>
           <input
             type="text"
             value={tag.name}
@@ -35,12 +50,19 @@ const InputBox: React.FC = () => {
             onChange={(e) => handleInputChange(e, index, "value")}
             placeholder="Tag Value"
           />
-          <button onClick={() => handleDeleteTag(index)}>Delete Tag</button>
+          <button
+            className={styles.deleteButton}
+            onClick={() => handleDeleteTag(index)}
+          >
+            X
+          </button>
         </div>
       ))}
-      <button onClick={() => setTags([...tags, { name: "", value: "" }])}>
-        Add Tag
-      </button>
+      {tags.length < 6 && (
+        <button className={styles.addButton} onClick={handleAddTag}>
+          Add Tag
+        </button>
+      )}
     </div>
   );
 };

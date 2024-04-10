@@ -1,0 +1,36 @@
+/* pieCharts.module.css */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 10px;
+  height: 100%;
+}
+
+.chartContainer {
+  justify-content: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chartTitle {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: white;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 10px;
+  pointer-events: none;
+}
