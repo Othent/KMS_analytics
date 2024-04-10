@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tag-lytics",
+  title: "Tag Scan",
   description: "Easy Arweave GraphQL tag retrieval dashboard.",
 };
 
@@ -19,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <TransactionsProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <link rel="icon" href="/images/favicon.svg" sizes="any" />
+          {children}
+        </body>
       </TransactionsProvider>
     </html>
   );

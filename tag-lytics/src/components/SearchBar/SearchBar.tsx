@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import styles from "./components.module.css";
+import styles from "../components.module.css";
 
 interface SearchBarProps {
   // @ts-ignore
@@ -13,7 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onGatewayChange,
 }) => {
   const [selectedGateway, setSelectedGateway] = useState(
-    "https://arweave-search.goldsky.com/graphql",
+    "https://arweave.net/graphql",
   );
   const [customGateway, setCustomGateway] = useState("");
   const [savedGateways, setSavedGateways] = useState<string[]>([]);
@@ -103,11 +103,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
             onChange={handleGatewayChange}
             className={styles.select}
           >
-            <option value="https://arweave-search.goldsky.com/graphql">
-              https://arweave-search.goldsky.com/graphql
-            </option>
             <option value="https://arweave.net/graphql">
               https://arweave.net/graphql
+            </option>
+            <option value="https://arweave-search.goldsky.com/graphql">
+              https://arweave-search.goldsky.com/graphql
             </option>
             {savedGateways.map((gateway) => (
               <option key={gateway} value={gateway}>

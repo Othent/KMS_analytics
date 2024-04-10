@@ -1,9 +1,8 @@
-// PieCharts.tsx
 "use client";
 import React, { useState } from "react";
-import { useTransactions } from "../contexts/TransactionsContext";
+import { useTransactions } from "../../contexts/TransactionsContext";
 import { PieChart } from "react-minimal-pie-chart";
-import { getPieChartData } from "../utils/getPieChartData";
+import { getPieChartData } from "./getPieChartData";
 import styles from "./pieCharts.module.css";
 
 interface ExtendedPieChartData {
@@ -18,7 +17,7 @@ const PieCharts: React.FC = () => {
     [key: string]: number | undefined;
   }>({});
   const pieChartData = getPieChartData(transactions);
-  const COLORS = ["#2e2836", "#6c757d"];
+  const COLORS = ["#0a5c49", "#1e893a"];
 
   const assignColors = (data: ExtendedPieChartData[]) => {
     return data.map((entry, index) => ({

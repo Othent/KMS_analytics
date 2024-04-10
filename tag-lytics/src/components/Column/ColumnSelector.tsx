@@ -1,6 +1,6 @@
 import React from "react";
-import { useTransactions } from "../contexts/TransactionsContext";
-import styles from "./searchbar.module.css";
+import { useTransactions } from "../../contexts/TransactionsContext";
+import styles from "./column.module.css";
 
 const columns = {
   txId: "TX ID",

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTransactions } from "@/contexts/TransactionsContext";
-import styles from "./components.module.css";
+import styles from "./inputBoxes.module.css";
 
 const InputBox: React.FC = () => {
   const { tags, setTags } = useTransactions();
@@ -22,7 +22,7 @@ const InputBox: React.FC = () => {
 
   React.useEffect(() => {
     if (!tags.length) {
-      setTags([{ name: "", value: "" }]);
+      setTags([{ name: "Test", value: "Test" }]);
     }
   }, [tags, setTags]);
 

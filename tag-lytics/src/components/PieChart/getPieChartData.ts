@@ -1,5 +1,5 @@
 // getPieChartData.tsx
-import { Transaction } from "./getTransactions";
+import { Transaction } from "../../utils/getTransactions";
 
 interface ExtendedPieChartData {
   name: string;

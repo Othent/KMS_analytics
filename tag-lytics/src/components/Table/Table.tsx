@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import styles from "./components.module.css";
-import { useTransactions } from "@/contexts/TransactionsContext"; // Adjust the import path as necessary
-import { getAllTransactions } from "@/utils/getTransactions"; // Ensure this path matches your project structure
+import styles from "./table.module.css";
+import { useTransactions } from "@/contexts/TransactionsContext";
+import { getAllTransactions } from "@/utils/getTransactions";
 
-// Utility function to shorten strings, as originally provided
 const smallString = (str: string) => {
   if (str.length <= 7) {
     return str;

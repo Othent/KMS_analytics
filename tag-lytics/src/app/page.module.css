@@ -17,14 +17,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
-.row {
+.row1 {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.row2 {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  width: 100%;
 }
 
 .footer {

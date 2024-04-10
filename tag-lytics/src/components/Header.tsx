@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./components.module.css";
 import Image from "next/image";
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 
 interface HeaderProps {
   // @ts-ignore
@@ -15,12 +15,12 @@ const Header: React.FC<HeaderProps> = ({ searchParams, onGatewayChange }) => {
       <div className={styles.logoContainer}>
         <Image
           src="/images/tag-logo.svg"
-          alt="Tag-lytics logo"
-          width={50}
+          alt="Tag Scan logo"
+          width={30}
           height={20}
           priority
         />
-        <h1 className={styles.h1}>Tag-lytics</h1>
+        <h1 className={styles.h1}>Tag Scan</h1>
       </div>
       <SearchBar
         searchParams={searchParams}
